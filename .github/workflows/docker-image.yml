@@ -25,7 +25,7 @@ jobs:
         docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
     - name: Get current date # get the date of the build
       id: date
-      run: echo "::set-output name=date::$(date +'%Y-%m-%d--%M-%S')"
+      run: echo "::set-output name=date::$(date +'%Y%m%d-%H%M%S')"
     - name: Build the Docker image # push The image to the docker hub
       run: docker build . --file Dockerfile --tag $DOCKER_USERNAME/$DOCKER_REPONAME:${{ steps.date.outputs.date }}
     - name: Docker Push
