@@ -1,4 +1,4 @@
-ARG NODE_VERSION=12.18.3
+ARG NODE_VERSION=14.20.0
 
 FROM node:${NODE_VERSION}
 RUN apt-get update && apt-get install -y libsecret-1-dev
