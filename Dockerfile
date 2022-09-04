@@ -42,6 +42,7 @@ ADD python/requirements.txt /tmp/
 RUN apt-get update \
     && apt-get install -y libsecret-1-0 \
     && apt-get install -y python3-dev python3-pip \
+    && apt-get install -y sshpass ncat \
     && pip3 install --upgrade pip \
     && pip3 install python-language-server flake8 autopep8 \
     && apt-get install -y yarn \
