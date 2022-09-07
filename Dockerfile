@@ -51,30 +51,30 @@ RUN apt-get update \
     && apt-get upgrade -yq --no-install-recommends \
                     ca-certificates \
                     openssl \
-                    libsecret-1-0 \
     && update-alternatives --install /usr/bin/python python /usr/local/bin/python3.8 99 \
     \
+    && apt-get purge make build-essential -y \
     && apt-get clean \
     && apt-get auto-remove -y \
     && rm -rf /var/cache/apt/* \
     && rm -rf /var/lib/apt/lists/* \
-    && rm -rf /tmp/*
+    && rm -rf /tmp/* \
+    \
+    && mkdir -p /home/theia \
+    && mkdir -p /home/project
+
+ENV HOME /home/theia
+WORKDIR /home/theia
+COPY --from=0 /home/theia /home/theia
+
+ENV SHELL=/bin/bash \
+    THEIA_DEFAULT_PLUGINS=local-dir:/home/theia/plugins \
+    USE_LOCAL_GIT=true \
+    TZ="Asia/Taipei"
 
 # Expose ports
 EXPOSE 3000
 HEALTHCHECK --interval=300s --timeout=3s CMD curl -fs http://localhost:3000 || exit 1
-
-RUN mkdir -p /home/theia \
-    && mkdir -p /home/project
-ENV HOME /home/theia
-WORKDIR /home/theia
-COPY --from=0 /home/theia /home/theia
-ENV SHELL=/bin/bash \
-    THEIA_DEFAULT_PLUGINS=local-dir:/home/theia/plugins
-ENV USE_LOCAL_GIT true
-
-ENV TZ "Asia/Taipei"
-ENV THEIA_WEBVIEW_EXTERNAL_ENDPOINT="{{hostname}}"
 
 COPY my_wrapper_script.sh my_wrapper_script.sh
 CMD bash

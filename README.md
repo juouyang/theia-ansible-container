@@ -3,11 +3,11 @@
 ## Build
 
 ```
-docker build -t theia-ansible-container:dev .
+docker build -t theia-ansible:dev .
 ```
 
 ## Run
 
 ```
-docker run --rm -it -p 3000:3000 -v $(pwd)/ansible/demo:/home/project theia-ansible-container:dev
+docker run --rm -it -p 3000:3000 -v $(pwd)/ansible/demo:/home/project theia-ansible:dev
 ```
