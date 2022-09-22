@@ -36,17 +36,51 @@ spec:
             name: theia-project
           - mountPath: "/home/theia/.ansible"
             name: cache-volume
+          - mountPath: "/home/theia/.theia"
+            name: theia-setting
+          - mountPath: "/home/theia/.ssh"
+            name: theia-ssh
       volumes:
       - name: cache-volume
         emptyDir: {}
       - name: theia-project
         persistentVolumeClaim:
           claimName: theia-project-vol
+      - name: theia-setting
+        persistentVolumeClaim:
+          claimName: theia-setting-vol
+      - name: theia-ssh
+        persistentVolumeClaim:
+          claimName: theia-ssh-vol
 ---
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
   name: theia-project-vol
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 512Mi
+  storageClassName: longhorn
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: theia-setting-vol
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 512Mi
+  storageClassName: longhorn
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: theia-ssh-vol
 spec:
   accessModes:
     - ReadWriteOnce
