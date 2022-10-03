@@ -76,6 +76,13 @@ ENV SHELL=/bin/bash \
 EXPOSE 3000
 HEALTHCHECK --interval=300s --timeout=3s CMD curl -fs http://localhost:3000 || exit 1
 
-COPY my_wrapper_script.sh my_wrapper_script.sh
+RUN addgroup theia \
+    && adduser --ingroup theia --disabled-password --gecos "" --no-create-home theia \
+    && chown -R theia:theia /home/theia \
+    && chown -R theia:theia /home/project \
+    && echo 'export PS1="# "' >> /home/theia/.bashrc
+USER theia
+
+COPY docker-entrypoint.sh docker-entrypoint.sh
 CMD bash
-ENTRYPOINT ./my_wrapper_script.sh
+ENTRYPOINT ./docker-entrypoint.sh

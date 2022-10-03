@@ -14,5 +14,6 @@ docker build --progress=plain -t theia-ansible:dev .
 docker run --rm -it -p 3000:3000 \
     -v $(pwd)/demo/project:/home/project \
     -v $(pwd)/demo/theia-settings:/home/theia/.theia \
+    -v $(pwd)/demo/ssh-config:/home/theia/.ssh \
     theia-ansible:dev
 ```

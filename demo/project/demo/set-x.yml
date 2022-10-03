@@ -1,0 +1,7 @@
+# set-x.yml
+- debug:
+    msg: "call set-x"
+- set_fact:
+    x: "data"
+- debug:
+    var: x
