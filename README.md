@@ -2,7 +2,7 @@
 
 ## Build
 
-Need 4G ram for webpack while building image. [[link](https://github.com/jupyterhub/jupyterlab-hub/issues/44)]
+Need 8G ram for webpack while building image. [[link](https://github.com/jupyterhub/jupyterlab-hub/issues/44)]
 
 ```
 docker build --progress=plain -t theia-ansible:dev .
