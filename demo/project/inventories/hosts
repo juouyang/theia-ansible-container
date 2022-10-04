@@ -1,9 +1,9 @@
 all:
   hosts:
-    ouyang-managed-node1:
-    ouyang-managed-node2:
+    managed-node1:
+    managed-node2:
   children:
     isolated:
       hosts:
-        ouyang-managed-node1:
-        ouyang-managed-node2:
+        managed-node1:
+        managed-node2:
