@@ -26,7 +26,7 @@ spec:
         app: theia
     spec:
       containers:
-      - image: juouyang/theia-ansible
+      - image: juouyang/theia-ansible:20221003-100750
         imagePullPolicy: Always
         name: theia
         ports:
