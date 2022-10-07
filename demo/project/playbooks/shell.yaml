@@ -1,7 +1,0 @@
-- name: run tasks on localhost
-  hosts: localhost
-  vars:
-    message: "hacked > /tmp/hacked && echo hacked"
-  tasks:
-  - name: echo content to test file
-    shell: "echo {{ message | quote }} > $PWD/tmp/test_file"
