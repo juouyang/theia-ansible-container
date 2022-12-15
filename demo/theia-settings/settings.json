@@ -1,4 +1,6 @@
 {
     "python.showStartPage": false,
-    "redhat.telemetry.enabled": false
+    "redhat.telemetry.enabled": false,
+    "workbench.colorTheme": "dark",
+    "editor.enablePreview": false
 }
