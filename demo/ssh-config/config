@@ -1,0 +1,8 @@
+Host *
+  SendEnv LANG LC_*
+  StrictHostKeyChecking no
+  UserKnownHostsFile /dev/null
+  ServerAliveInterval 30
+  ServerAliveCountMax 30
+  Compression yes
+  ExitOnForwardFailure no

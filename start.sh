@@ -2,7 +2,10 @@ mkdir -p $(pwd)/demo/project
 mkdir -p $(pwd)/demo/theia-settings
 mkdir -p $(pwd)/demo/ssh-config
 
+docker network create ansible
+
 docker run -d --name theia \
+    --network ansible \
     -p 3000:3000 \
     -v $(pwd)/demo/project:/home/project \
     -v $(pwd)/demo/theia-settings:/home/theia/.theia \
