@@ -1,9 +1,0 @@
-all:
-  hosts:
-    managed-node1:
-    managed-node2:
-  children:
-    isolated:
-      hosts:
-        managed-node1:
-        managed-node2:
